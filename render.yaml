@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: demandiq-backend
+    env: python
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "cd backend && gunicorn app:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: REDDIT_CLIENT_ID
+        sync: false
+      - key: REDDIT_CLIENT_SECRET
+        sync: false
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: demandiq-db
+          property: connectionString
+
+databases:
+  - name: demandiq-db
+    databaseName: demandiq
+    user: demandiq_user
+    plan: free

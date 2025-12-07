@@ -1,0 +1,33 @@
+# Create .gitignore
+cat > .gitignore << EOF
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.env
+
+# Database
+*.db
+*.sqlite3
+
+# Models
+models/*.h5
+models/*.pkl
+
+# Node
+node_modules/
+.DS_Store
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# Uploads
+uploads/
+EOF
